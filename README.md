@@ -23,7 +23,7 @@ $ ./zkt --server=localhost
 ## Flags
 
 ### `server`
-`--server <hostname>` will specify the ZooKeeper instance to attach to.
+`--server=<hostname>` will specify the ZooKeeper instance to attach to.
 
 The default value is `127.0.0.1:2181`
 
@@ -41,6 +41,20 @@ $ ./zkt -p
 ```
 
 The default value is `false`
+
+### `depth`
+`-depth=<depth>` will specify a limit to how far down each path zkt will go. If it is not present, or if the provided number is not valid (>= 0), it will run unlimited.
+
+```sh
+$ ./zkt -depth=1
++- /
+|  +- node-I
+|  +- node-II
+|  +- node-III
+|  +- zookeeper
+```
+
+The default is unlimted.
 
 ### `debug`
 `-debug` configures zkt to print logs, this may provide more information about the underlying ZooKeeper client library's attempts to connect to the ZooKeeper server.
